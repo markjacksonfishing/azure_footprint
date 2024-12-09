@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azure-footprint
+  namespace: azure-footprint
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: azure-footprint
+  template:
+    metadata:
+      labels:
+        app: azure-footprint
+    spec:
+      containers:
+        - name: azure-footprint
+          image: anuclei/azure-footprint:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: AZURE_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: azure-secrets
+                  key: client-id
+            - name: AZURE_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: azure-secrets
+                  key: client-secret
+            - name: AZURE_TENANT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: azure-secrets
+                  key: tenant-id
