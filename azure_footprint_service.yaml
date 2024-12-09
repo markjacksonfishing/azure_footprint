@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-footprint
+  namespace: azure-footprint
+  labels:
+    app: azure-footprint
+spec:
+  selector:
+    app: azure-footprint
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080 # Update if your app uses a different container port
+  type: ClusterIP
