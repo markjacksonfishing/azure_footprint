@@ -155,6 +155,10 @@ This project uses the Azure SDK for Go and its relevant packages:
 - `armcompute` for virtual machine management
 
 
+# Dockerfile
+
+If you want to pull the already-built container, you can find it on Docker Hub at [anuclei/azure_footprint](https://hub.docker.com/r/anuclei/azure_footprint).
+
 ## Next Steps
 
 This project provides a basic CLI tool for exploring Azure resources. You can extend it by adding more features, such as listing other types of resources, starting/stopping VMs, or deploying new resources.
